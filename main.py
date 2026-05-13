@@ -21,7 +21,7 @@ def initController(name: str, config: Config):
     elif name == 'random':
         return RandomController(config)
     elif name == 'PBScaler':
-        simulation_model_path = '/home/ubuntu/xsy/experiment/autoscaling/simulation/train_ticket/RandomForestClassify.model'
+        simulation_model_path = '/Users/quockhanh/Code/PBScaler/simulation/boutique/RandomForestClassify.model'
         return PBScaler(config, simulation_model_path)
     else:
         raise NotImplementedError() 

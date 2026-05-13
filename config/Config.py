@@ -19,8 +19,8 @@ class Config():
         self.min_pod = 1
 
         # k8s config path
-        self.k8s_config = '/home/ubuntu/xsy/config'
-        self.k8s_yaml = '/home/ubuntu/xsy/microservices-demo/release/kubernetes-manifests.yaml'
+        self.k8s_config = '/Users/quockhanh/.kube/config'
+        self.k8s_yaml = '/Users/quockhanh/Code/PBScaler/benchmarks/microservices-demo/release/kubernetes-manifests.yaml'
         
         # set the duration of experiment
         self.duration = 1 * 20 * 60 # 20 min
@@ -28,6 +28,6 @@ class Config():
         self.end = self.start + self.duration
 
         # prometheus
-        self.prom_range_url = "http://192.168.31.202:32030/api/v1/query_range"
-        self.prom_no_range_url = "http://192.168.31.202:32030/api/v1/query"
+        self.prom_range_url = "http://localhost:9090/api/v1/query_range"
+        self.prom_no_range_url = "http://localhost:9090/api/v1/query"
         self.step = 5

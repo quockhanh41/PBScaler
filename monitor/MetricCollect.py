@@ -200,8 +200,8 @@ def collect_succeess_rate(config: Config, _dir: str):
 
 def collect(config: Config, _dir: str):
     print('collect metrics')
-    if not os._dir.exists(_dir):
-        os.make_dirs(_dir)
+    if not os.path.exists(_dir):
+        os.makedirs(_dir)
     collect_call_latency(config, _dir)
     collect_svc_latency(config, _dir)
     collect_resource_metric(config, _dir)

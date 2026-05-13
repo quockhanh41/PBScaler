@@ -170,7 +170,7 @@ class PBScaler:
         only optimize the root services
         TODO: base the root score
         '''
-        opter = GA('/home/ubuntu/xsy/experiment/autoscaling/simulation/train_ticket/RandomForestClassify.model', dim, min_array, max_array, 'max', size_pop=50, max_iter=5, prob_cross=0.9, prob_mut=0.01, precision=1, encoding='BG', selectStyle='tour', recStyle='xovdp', mutStyle='mutbin', seed=1)
+        opter = GA('/Users/quockhanh/Code/PBScaler/simulation/boutique/RandomForestClassify.model', dim, min_array, max_array, 'max', size_pop=50, max_iter=5, prob_cross=0.9, prob_mut=0.01, precision=1, encoding='BG', selectStyle='tour', recStyle='xovdp', mutStyle='mutbin', seed=1)
 
         opter.set_env(workloads, mss, roots, r)
         res = opter.evolve()

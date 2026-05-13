@@ -1,0 +1,51 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+
+# Experiment output
+output/
+
+# Trained models
+simulation/boutique/
+simulation/train_ticket/
+
+# Simulation data CSVs
+simulation/train-ticket.csv
+train_data/
+
+# Downloaded tools
+istio-1.*/
+
+# Java build artifacts
+benchmarks/**/target/
+
+# Large files
+PBScaler.pdf
+
+# Claude Code
+.claude/
+
+# Environment
+.env
+*.log
+
+# OS junk
+Thumbs.db

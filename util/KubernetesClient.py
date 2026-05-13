@@ -35,13 +35,12 @@ class KubernetesClient():
 
     def get_svcs_counts(self):
         dic = {}
-        pod_ret=self.core_api.list_namespaced_pod(self.namespace, watch=False)
-        svcs = self.get_svcs()
-        for svc in svcs:
-            dic[svc] = 0
-            for i in pod_ret.items:
-                if i.metadata.name.find(svc)!=-1:
-                    dic[svc] = dic[svc] + 1
+        ret = self.apps_api.list_namespaced_deployment(self.namespace)
+        for item in ret.items:
+            name = item.metadata.name
+            if name != 'loadgenerator':
+                ready = item.status.ready_replicas or 0
+                dic[name] = ready
         return dic
 
     def get_svc_count(self, svc):
@@ -51,17 +50,21 @@ class KubernetesClient():
     def all_avaliable(self):
         ret = self.apps_api.list_namespaced_deployment(self.namespace)
         for item in ret.items:
-            if item.status.ready_replicas != item.spec.replicas:
+            ready = item.status.ready_replicas or 0
+            desired = item.spec.replicas or 0
+            if ready != desired:
                 return False
         return True
 
     # Determine the status of the service (avaliable?)
     def svcs_avaliable(self, svcs):
         ret = self.apps_api.list_namespaced_deployment(self.namespace)
-        items = [item for item in ret.items if item.metadata.name == 'svc']
         for item in ret.items:
-            if item.metadata.name in svcs and item.status.ready_replicas != item.spec.replicas:
-                return False
+            if item.metadata.name in svcs:
+                ready = item.status.ready_replicas or 0
+                desired = item.spec.replicas or 0
+                if ready != desired:
+                    return False
         return True
 
     def patch_scale(self, svc, count):
